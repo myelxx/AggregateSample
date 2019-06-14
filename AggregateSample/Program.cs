@@ -20,7 +20,29 @@ namespace AggregateSample
 
             //with linq aggregate
             string result1 = countries.Aggregate( (a,b) => a + ", " + b);
-            Console.WriteLine(result1);
+
+            int zz = countries.Aggregate(0, (current, item) => current + item.Length);
+
+            Console.WriteLine(zz);
+
+            //
+            int[] numbers = { 1, 2, 3, 4 };
+            //seed parameter
+            int total = numbers.Aggregate( 10, (num1, num2) => num1 + num2);
+            Console.WriteLine(total);
+
+            //without aggregate
+            int answer = 10;
+            foreach (int num in numbers)
+            {
+                answer = answer + num;
+            }
+
+            Console.WriteLine(answer * 2);
+
+            //mutiple parameter
+            //3 overloads
+            Console.WriteLine(numbers.Aggregate(10, (sum, next) => sum + next, sum => sum * 2));
         }
     }
 }
